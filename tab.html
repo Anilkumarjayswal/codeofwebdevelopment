@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: skyblue;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  border-radius:20px; 
+  margin-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 20%;
+
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+</head>
+<body>
+
+<div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'Profile')">Profile</button>
+            <button class="tablinks" onclick="openCity(event, 'Name')">Name Info</button>
+            <button class="tablinks" onclick="openCity(event, 'Account')">Account And Security Questions</button>
+            <button class="tablinks" onclick="openCity(event, 'Work')">Work Contact & History</button>
+             <button class="tablinks" onclick="openCity(event, 'Address')">Address Information</button>
+             <button class="tablinks" onclick="openCity(event, 'Government')">Government Identity</button>
+             <button class="tablinks" onclick="openCity(event, 'Phone')">Phone & Email</button>
+             <button class="tablinks" onclick="openCity(event, 'Bank')">Bank Details</button>
+              <button class="tablinks" onclick="openCity(event, 'Payment')">Payment History, PayStubs, W2</button>
+
+              <button class="tablinks" onclick="openCity(event, 'Bank')">Bank Details</button>
+              <button class="tablinks" onclick="openCity(event, 'Bank')">Bank Details</button>
+              <button class="tablinks" onclick="openCity(event, 'Expenses')">Expenses Reimbursement
+</button>
+              <button class="tablinks" onclick="openCity(event, 'Timesheets')">Timesheets</button>
+              <button class="tablinks" onclick="openCity(event, 'Leave')">Leave/Holiday</button>
+                <button class="tablinks" onclick="openCity(event, 'Document')">Document Requests</button>
+</div>
+
+<div id="Profile" class="tabcontent">
+  <h3>Profile</h3>
+  <p>Profile of Employee.</p>
+</div>
+
+<div id="Name" class="tabcontent">
+  <h3>Name Info</h3>
+  <p>Details</p> 
+</div>
+
+<div id="Account" class="tabcontent">
+  <h3>Account And Security Questions</h3>
+  <p>Details</p>
+</div>
+
+<div id="Work" class="tabcontent">
+  <h3>Work Contact & History</h3>
+  <p>Details </p>
+</div>
+
+<div id="Address" class="tabcontent">
+  <h3>Address Information</h3>
+  <p>Details </p>
+</div>
+
+<div id="Government" class="tabcontent">
+  <h3>Government Identity</h3>
+  <p>Details </p>
+</div>
+
+<div id="Phone" class="tabcontent">
+  <h3>Phone and Email</h3>
+  <p>Details </p>
+</div>
+
+<div id="Bank" class="tabcontent">
+  <h3>Bank Details</h3>
+  <p>Details </p>
+</div>
+
+<div id="Payment" class="tabcontent">
+  <h3>Payment History, PayStubs, W2</h3>
+  <p>Details </p>
+</div>
+
+<div id="Expenses" class="tabcontent">
+  <h3>Expenses Reimbursement</h3>
+  <p>Details </p>
+</div>
+
+<div id="Timesheets" class="tabcontent">
+  <h3>Timesheets</h3>
+  <p>Details</p>
+</div>
+
+<div id="Leave" class="tabcontent">
+  <h3>Leave/Holiday</h3>
+  <p>Details</p>
+</div>
+
+<div id="Document" class="tabcontent">
+  <h3>Document Requests</h3>
+  <p></p>
+</div>
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+   
+</body>
+</html> 
+ 
