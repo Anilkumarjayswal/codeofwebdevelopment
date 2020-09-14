@@ -1,0 +1,108 @@
+//job controller.php	
+function viewjob(){
+		if(isset($_GET['id'])){
+			$id =$_GET['id'];
+			$this->jobs->set('id',$id);
+			$this->singlejob = $this->jobs->jobById();
+			$this->loadview('admin/jobview');
+		}
+	}
+//jobmodel.php
+ function jobById(){
+  $sql = "SELECT tjp.JobPostingID, tjp.Subtitle, tjp.JobTypeID, tjp.CountryID, tjp.StateID, 
+tjp.JobIDVisibility, tjp.JobStatusID, tjp.isActive, tjp.Title,tljc.Name as Category, tjp.Description,
+ tjp.JobStatusID, tlc.Name as Country, tls.Name as State,tjp.DatePosted, tjp.City FROM tblJobPosting tjp INNER JOIN 
+tblLookupCountry tlc ON tjp.CountryID=tlc.CountryID INNER JOIN tblLookupState tls ON tjp.StateID = tls.StateID INNER JOIN tblLookupJobCategory tljc 
+ON tjp.JobCategoryID = tljc.JobCategoryID  WHERE JobPostingID=?";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(1,$this->id,PDO::PARAM_INT);
+            return $this->select($stmt);
+        }
+
+
+
+
+//////////////////////////////////////
+<h1 class="mt-5">Jobs List</h1> <ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item">Dashboard</li>
+			<li class="breadcrumb-item ">Jobs Posts</li>
+			<li class="breadcrumb-item active">Jobs View </li>
+</ol>
+
+<div class="row mb-4">
+  <div class="col-md-3 ml-4 singlejob-overview">
+  <div>
+            <h2 class="text-success text-center">Job Overview</h2>
+            <hr>
+            <div class="row">
+              <h3 class="col"> <b>Req #: </b> <span class="text-dark"> 1002</span></h3>
+            </div>
+           
+              <div class=""><h3>Location: </h3> <p><?php echo $this->singlejob[0]['City'];?></p></div>
+
+              <div class=""><h3>Job Category: </h3> <p><?php echo $this->singlejob[0][''];?></p></div>
+ 
+              <div class=""><h3>Date Posted: </h3> <p><?php echo date('M d, Y', strtotime($this->singlejob[0]['DatePosted']));?></p> </div>
+  
+          </div>
+  <hr>
+  <div class="reuse-job text-center py-3">
+    <a class="btn-lg btn-primary" href="<?=base_url().'admin/job/addjob?id='.$this->singlejob[0]['JobPostingID'];?>">Reuse this job</a>
+  </div>
+  </div>
+  <div class="col-md-8 mx-auto jobsingle-desc">
+  <h2 class="text-success text-center">Job Detail</h2>
+  <hr>
+    <div class="jobsingle-title row">
+      <h3>Job Title:</h3> <span><?php echo $this->singlejob[0]['Title'];?></span>
+    </div> 
+      <h3>Description:</h3> <?php echo $this->singlejob[0]['Description'];?>
+  </div>
+</div>
+
+
+
+
+
+
+
+css///////////////////////////////////////////////////////////
+
+.jobsingle-title span{
+  font-size:2rem;
+  padding-left: 1rem;
+}
+
+.jobsingle-title{
+  align-items: baseline;
+  padding-left: 0.75rem;
+}
+
+.jobsingle-desc, .singlejob-overview{
+  padding: 1rem;
+  border-top: 3px solid #0089ca;
+  background-color: #fff;
+  border-bottom: 1px solid #d8d8d8;
+  border-right: 1px solid #d8d8d8;
+  border-left: 1px solid #d8d8d8;
+}
+
+.jobsingle-desc h3, .singlejob-overview h3{
+  color: #0089ca;
+}
+
+.singlejob-overview p{
+  color:#3a3a3a;
+  font-size: 1.15rem;
+}
+
+
+
+
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+
+
